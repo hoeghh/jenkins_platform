@@ -1,1 +1,1 @@
-docker build --no-cache -t hoeghh/dockerslave .
+docker build --no-cache -t hoeghh/jenkins-slave .
