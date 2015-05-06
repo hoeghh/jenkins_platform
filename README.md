@@ -25,6 +25,9 @@ The Dockerfile is very simple. Thats becourse its based on the official library/
 ### run.sh
 The run script starts the container and prints out its docker ID and IP address.
 
+### update-jenkins.sh
+This script will, when Jenkins is running, pull the plugins from Jenkins that needs to be updated, and then request Jenkins to do the update, and restart. Jenkins need to be running for this. After the script stops running, the Jenkins instances plugins will be up-to-date.
+
 ## Jenkins slave
 
 ### Dockerfile
