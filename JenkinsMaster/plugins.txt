@@ -1,2 +1,5 @@
+ssh-slaves:latest
+durable-task:latest
+token-macro:latest
 docker-plugin:latest
 kubernetes:latest
