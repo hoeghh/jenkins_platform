@@ -25,3 +25,10 @@ The Dockerfile is very simple. Thats becourse its based on the official library/
 ### run.sh
 The run script starts the container and prints out its docker ID and IP address.
 
+## Jenkins slave
+
+### Dockerfile
+This Dockerfile is based on the ubuntu:trusty image. It installs OpenSSH server and OpenJDK 7. It adds a jenkins user and exposes port 22.
+
+### build.sh
+The build script simply builds the slave with --no-cache and stores it as hoeghh/jenkinsslave.
