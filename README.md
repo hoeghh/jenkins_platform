@@ -14,16 +14,18 @@ durable-task:latest
 token-macro:latest
 docker-plugin:latest
 kubernetes:latest
+config-file-provider
+openstack-cloud
 ```
 ### build.sh
 This script deletes old jenkins.war files and then downloads the latest jenkins from the web using wget. It then build t
-he container with no-cache, and hoeghh/jenkins-master as tag.
+he container with no-cache, and hoeghh/jenkins-master as tag. 
 
 ### Dockerfile
 The Dockerfile is very simple. Thats becourse its based on the official library/jenkins images. Our Dockerfile copies a new jenkins.war file into the image. This is downloaded by the build.sh script. The Dockerfile also copies a txt file with plugins into the image, and run plugins.sh that installs them.
 
 ### run.sh
-The run script starts the container and prints out its docker ID and IP address.
+The run script starts the container and prints out its docker ID and IP address. It then creates a jm.properties file with the ID and IP of the running container. This is then used in the update_plugins.sh script.
 
 ### update-jenkins.sh
 This script will, when Jenkins is running, pull the plugins from Jenkins that needs to be updated, and then request Jenkins to do the update, and restart. Jenkins need to be running for this. After the script stops running, the Jenkins instances plugins will be up-to-date.
