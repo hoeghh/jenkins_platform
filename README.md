@@ -8,6 +8,7 @@ You find the files for the Jenkins master inside the folder JenkinsMaster. Here 
 ### plugins.txt
 This file containes the plugins we want to install.
 Example :
+
 ```
 ssh-slaves:latest
 durable-task:latest
@@ -15,6 +16,7 @@ token-macro:latest
 docker-plugin:latest
 kubernetes:latest
 ```
+
 ### build.sh
 This script deletes old jenkins.war files and then downloads the latest jenkins from the web using wget. It then build t
 he container with no-cache, and hoeghh/jenkins-master as tag.
