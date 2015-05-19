@@ -2,7 +2,7 @@ sudo yum install wget python-pip python-openstackclient  -y
 wget https://objects.zetta.io:8443/v1/AUTH_58078b69475b41b4a26b767627fc60b6/docker-machine/docker-machine_linux-amd64
 
 mv docker-machine_linux-amd64 zetta-docker-machine
-chmod u+x docker-machine
+chmod u+x zetta-docker-machine
 
 echo "Get Standard-openrc.sh file from here: https://dashboard.zetta.io/project/access_and_security/api_access/openrc/"
 
