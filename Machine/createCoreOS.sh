@@ -1,4 +1,4 @@
-./zetta-docker-machine create  \
+./zetta-docker-machine -D create  \
   --driver openstack  \
   --openstack-flavor-id 6  \
   --openstack-image-id 5178239d-6853-4da9-8934-53990db845ff  \
