@@ -1,0 +1,16 @@
+registry:
+  image: registry:0.9.1
+  environment:
+   - STORAGE_PATH=/mnt/registry
+  volumes:
+   - /mnt/praqmaRegistry:/mnt/registry
+  ports:
+   - "5000:5000"
+hub:
+  image: atcol/docker-registry-ui
+  links:
+   - registry
+  environment: 
+   - REG1=http://registry_1:5000/v1/
+  ports:
+   - "80:8080"
