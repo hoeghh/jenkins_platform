@@ -1,5 +1,5 @@
 registry:
-  image: registry:2.0
+  image: registry:0.9.1
   environment:
    - STORAGE_PATH=/mnt/registry
   volumes:
