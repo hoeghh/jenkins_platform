@@ -22,19 +22,28 @@ sudo curl -O https://raw.githubusercontent.com/hoeghh/jenkins_platform/master/Ma
 
 #Fix cerfiticate problem on docker host
 (ps -ef|grep docker and then kill it. the ps gives the old command)
-add "--insecure-registry 192.168.99.104" to your docker daemon command, and run it. (remember sudo)
+add "--insecure-registry 192.168.99.101" to your docker daemon command, and run it. (remember sudo)
+
+exit
+
+cd Machine/registry
+docker-compose up -d
 
 #Get the IP of the Instans
 docker-machine ls
 
-cd registry
-docker-compose up -d
-
-#Go to the IP (here 192.168.99.104), in a browser, add /ui
+#Go to the IP (here 192.168.99.101), in a browser, add /ui
 
 #Push an image to the repository
 docker pull redis:latest
-docker tag redis:latest 192.168.99.104/praqma/redis:latest
-docker push 192.168.99.104/praqma/redis:latest
-docker pull 192.168.99.104/praqma/redis:latest
+docker tag redis:latest 192.168.99.101/praqma/redis:latest
+docker push 192.168.99.101/praqma/redis:latest
+docker pull 192.168.99.101/praqma/redis:latest
+
+#Check consistant data
+docker-compose stop
+docker ps -a
+delete the three we use (registry, ui and nginx)
+docker-compose up
+Check website for redis
 
