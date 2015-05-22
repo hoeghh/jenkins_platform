@@ -1,0 +1,40 @@
+#If on redhat, turn off SELinux
+sudo setenforce 0
+
+#Create an instans for the platform in VirtualBox
+docker-machine create -d virtualbox jenkinsplatform 
+
+#Set your docker to point at the instans
+eval "$(docker-machine env jenkinsplatform)"
+
+#Login to the instance and prepare the /mnt folder
+docker-machine ssh jenkinsplatform
+cd /mnt
+sudo mkdir praqma
+cd praqma
+sudo mkdir nginx
+cd nginx
+
+#Download the conf file from github
+sudo curl -O https://raw.githubusercontent.com/hoeghh/jenkins_platform/master/Machine/registry/praqma.conf
+
+(Stay on the virtualbox instans)
+
+#Fix cerfiticate problem on docker host
+(ps -ef|grep docker and then kill it. the ps gives the old command)
+add "--insecure-registry 192.168.99.104" to your docker daemon command, and run it. (remember sudo)
+
+#Get the IP of the Instans
+docker-machine ls
+
+cd registry
+docker-compose up -d
+
+#Go to the IP (here 192.168.99.104), in a browser, add /ui
+
+#Push an image to the repository
+docker pull redis:latest
+docker tag redis:latest 192.168.99.104/praqma/redis:latest
+docker push 192.168.99.104/praqma/redis:latest
+docker pull 192.168.99.104/praqma/redis:latest
+
