@@ -38,6 +38,7 @@ docker-machine ls
 docker pull redis:latest
 docker tag redis:latest 192.168.99.101/praqma/redis:latest
 docker push 192.168.99.101/praqma/redis:latest
+docker rmi 192.168.99.101/praqma/redis:latest
 docker pull 192.168.99.101/praqma/redis:latest
 
 #Check consistant data
